@@ -80,6 +80,8 @@ class Game:
         if player.get_score() > 21:
             return Result.BROKE
         elif self.dealer.get_score() > 21:
+            if player.get_score() == 21:
+                return Result.BLACKJACK_WIN
             return Result.WIN
         else:
             if player.get_score() == 21:

@@ -13,12 +13,15 @@ class CliRunner:
         while keep_playing:
             current_game = Game(copy.deepcopy(players))
             all_players_finished = False
+            print("\nGame started.")
+            self._print_player_status(current_game.dealer)
             while not all_players_finished:
                 try:
                     self._print_current_player(current_game)
                     self._print_player_status(current_game.get_current_player())
                     self._deal_cards(current_game)
                 except PlayerBrokenException:
+                    self._print_player_status(current_game.get_current_player())
                     print("You are broken!")
                 finally:
                     if current_game.has_next_player():
